@@ -4,70 +4,24 @@
  */
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JPanel;
 
 /**
  *
  * @author Soroush
  */
-public class PanelFrame extends javax.swing.JFrame {
+public class CalcFrame extends javax.swing.JFrame {
 
-    JPanel p1;
-    JPanel p2;
-    JPanel p3;
-    JPanel p4;
-    
     /**
-     * Creates new form PanelFrame
+     * Creates new form CalcFrame
      */
-    public PanelFrame() {
-        
+    public CalcFrame() {
         initComponents();
-        
-        setLayout(new GridLayout(1, 3));
-        
-        p1 = new JPanel();
-        p1.setBackground(Color.red);
-        p2 = new JPanel();
-        p2.setBackground(Color.green);
-        p3 = new JPanel();
-        p3.setBackground(Color.blue);
-        
-        add(p1);
-        add(p2);
-        add(p3);
-        
-        p2.setLayout(new GridLayout(2, 1));
-        p2.add(new JButton("B11"));
-        p2.add(new JButton("B12"));
-        
-        p1.setLayout(new BorderLayout());
-        p1.add(new JButton("B13"), BorderLayout.NORTH);
-        p1.add(new JButton("B14"), BorderLayout.WEST);
-        p1.add(new JButton("B15"), BorderLayout.EAST);
-        p1.add(new JButton("B16"), BorderLayout.SOUTH);
-        
-        p3.setLayout(new GridLayout(4, 2));
-        p3.add(new JButton("B1"));
-        p3.add(new JButton("B2"));
-        p3.add(new JButton("B3"));
-        p3.add(new JButton("B4"));
-        p3.add(new JButton("B5"));
-        
-        p4 = new JPanel();
-        p4.setBackground(Color.yellow);
-        p3.add(p4);
-        p3.add(new JButton("B9"));
-        p3.add(new JButton("B10"));
-        
-        p4.setLayout(new GridLayout(1, 3));
-        p4.add(new JButton("B6"));
-        p4.add(new JButton("B7"));
-        p4.add(new JButton("B8"));
+        setLayout(new GridLayout(2, 2));
+        add(new CalcPanel());
+        add(new CalcPanel());
+        add(new CalcPanel());
+        add(new CalcPanel());
     }
 
     /**
@@ -85,11 +39,11 @@ public class PanelFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 261, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -112,20 +66,20 @@ public class PanelFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PanelFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CalcFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PanelFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CalcFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PanelFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CalcFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PanelFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CalcFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PanelFrame().setVisible(true);
+                new CalcFrame().setVisible(true);
             }
         });
     }
