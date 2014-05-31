@@ -4,13 +4,25 @@
  */
 package gui;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.TexturePaint;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JLabel;
@@ -45,11 +57,17 @@ public class GraphicPanel extends javax.swing.JPanel implements ActionListener {
     }
     
     @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(Color.red);
+    public void paintComponent(Graphics g1) {
+        
+        super.paintComponent(g1);
+        
+        Graphics2D g = (Graphics2D)g1;
+        
+        Random r = new Random();
+        /*
+        g.setPaint(Color.red);
         g.drawRect(12, 25, 100, 20);
-        g.setColor(Color.blue);
+        g.setColor(new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)));
         g.fillRect(12, 50, 100, 20);
         g.drawString("Hello World!", 12, 100);
         g.setColor(Color.black);
@@ -61,14 +79,42 @@ public class GraphicPanel extends javax.swing.JPanel implements ActionListener {
         g.fillArc(100, 220, 50, 50, 370, -270);
         
         Polygon p = new Polygon();
-        Random r = new Random();
+        
         for (int i = 0; i < 50; i++) {
             p.addPoint(200 + r.nextInt(100), 100 + r.nextInt(100));
         }
         
         g.drawPolygon(p);
         
+        g.setPaint(new GradientPaint(300, 300, Color.yellow, 310, 330, Color.blue, true));
+        g.fillRect(300, 300, 100, 300);
+        //g.fillOval(600, 300, 200, 200);
+        //g.fill(new Rectangle2D.Double(600, 600, 100, 100));
+        //g.fill(new Ellipse2D.Double(800, 300, 100, 200));
         
+        g.setStroke(new BasicStroke(15));
+        */
+        BufferedImage img = new BufferedImage(10, 10, BufferedImage.TYPE_INT_RGB);
+        try {
+            img = (BufferedImage)ImageIO.read(getClass().getResource("a.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(GraphicPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        /*
+        g.setPaint(new TexturePaint(img, new Rectangle(20, 20)));
+        g.fill(new Rectangle2D.Double(400, 300, img.getWidth(), img.getHeight()));
+        
+        g.draw(new Rectangle2D.Double(800, 300, 100, 200));
+        */
+        
+        Person p = new Person(200, 200, 40, new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)), new Color(r.nextInt(256), r.nextInt(256), r.nextInt(256)));
+        //p.draw(g);
+        
+        for (int i = 1; i < 6; i++) {
+            //g.rotate(Math.PI / 3);
+            p.setX(p.getX() + 200);
+            p.draw(g);
+        }
     }
 
     /**
